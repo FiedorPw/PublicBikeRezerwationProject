@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
-public class Station {
+
+public class Station{
 
     private int index;
     private String stationName;
@@ -61,6 +62,10 @@ public class Station {
     public int getStationY() {
         return stationY;
     }
+    
+    public void rentBike(){
+        this.currentAmountOfBikes= this.currentAmountOfBikes-1;
+    }
 
     @Override
     public String toString() {
@@ -78,4 +83,8 @@ public class Station {
     public void setStationY(int stationY) {
         this.stationY = stationY;
     }
+
+
+
+
 }
