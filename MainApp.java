@@ -19,7 +19,7 @@ public class MainApp {
         int xComponent;
         int yComponent;
         double productOfXY;
-        double closestStation = 10000000;
+        double closestStation = 102400;
 
 
         for (int i = 0;i < stations.size(); i++) {
@@ -69,7 +69,7 @@ public class MainApp {
         int yComponent;
         double productOfXY;
         Station searchedStation = null;
-        double closestStation = 10000000;
+        double closestStation = 19600;
 
 
         for (int i = 0;i < stations.size(); i++) {
@@ -96,5 +96,22 @@ public class MainApp {
         }
     }
 
+    public void rent(int userId){
+    for(int i=0; i<customers.size(); i++){
+        if(customers.get(i).getIndex()==userId){
+            Station closestStation=findClosestStation(customers.get(1));
+            customers.get(i).setStationId(closestStation.getIndex());
+            closestStation.rentBike();
+            }
+        }
+    }
+
+    public void rent(User user){
+
+        Station closestStation=findClosestStation(user);
+        user.setStationId(closestStation.getIndex());
+        closestStation.rentBike();
+
+    }
 
 }
