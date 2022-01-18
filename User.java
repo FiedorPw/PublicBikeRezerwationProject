@@ -8,6 +8,7 @@ public class User {
     private int time;
     private int coordinateX;
     private int coordinateY;
+    private int stationId;
 
     public User(int index, String name, String surname, String bookedAt, int time, int coordinateX, int coordinateY) {
         this.index = index;
@@ -17,6 +18,7 @@ public class User {
         this.time = time;
         this.coordinateX = coordinateX;
         this.coordinateY = coordinateY;
+        this.stationId = -1;
     }
 
     public int getIndex() {
@@ -74,4 +76,12 @@ public class User {
     public void setCoordinateY(int coordinateY) {
         this.coordinateY = coordinateY;
     }
+
+    public void setStationId(int stationId){
+        this.stationId=stationId;
+    }
+    public int getStationid(){
+        return this.stationId;
+    }
+
 }
