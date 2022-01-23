@@ -10,6 +10,7 @@ public class User {
     private int time;
     private int coordinateX;
     private int coordinateY;
+    private int stationId =-1;
 
     public User(int index, String name, String surname, String bookedAt, int time, int coordinateX, int coordinateY) {
         this.index = index;
@@ -76,6 +77,14 @@ public class User {
     public void setCoordinateY(int coordinateY) {
         this.coordinateY = coordinateY;
     }
+
+    public void setStationId(int stationId){
+        this.stationId=stationId;
+    }
+    public int getStationid(){
+        return this.stationId;
+    }
+
 
     @Override
     public boolean equals(Object o) {
