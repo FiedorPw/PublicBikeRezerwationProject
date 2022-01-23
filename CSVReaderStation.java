@@ -6,9 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CSVReaderStation {
+    //stworzenie listy skladajacej sie z obiektow station - do odczytu z pliku i wrzucenia do kolekcji
     private ArrayList<Station> records = new ArrayList<>();
-    private ArrayList<String[]> rows = new ArrayList<>();
-    //List<List<String>> records = new ArrayList<List<String>>();
 
     private String fileName;
     private String separator;
@@ -24,11 +23,15 @@ public class CSVReaderStation {
             String line;
             int index =0;
             while ((line = br.readLine()) != null) {
+                //odczytywanie po kolei elementow z wiersza, index, nazwa stacji, etc.
+                //zapisane jest to wszystko do tablicy stringow
                 String[] t = line.split(separator);
-                rows.add(t);
 
+                //index wiekszy 0, bo nie bierzemy pierwszego wiersza z nazwami pól
                 if(index>0)
                 {
+                    //tworzymy obiekt stacji - czli wszystko to, co bedzie sie znajdowac w naszej liscie
+                    //nie-stringi zamieniamy na inty,
                     Station station = new Station(Integer.parseInt(t[0]),t[1],Integer.parseInt(t[2]),Integer.parseInt(t[3]),
                             Integer.parseInt(t[4]),Integer.parseInt(t[5]));
 
