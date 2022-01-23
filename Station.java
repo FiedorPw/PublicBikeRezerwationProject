@@ -76,6 +76,10 @@ public class Station {
 
     }
 
+    public void rentBike(){
+        this.currentAmountOfBikes= this.currentAmountOfBikes-1;
+    }
+
     public void setStationY(int stationY) {
         this.stationY = stationY;
     }
@@ -92,4 +96,6 @@ public class Station {
     public int hashCode() {
         return Objects.hash(index, stationName, stationCapacity, currentAmountOfBikes, stationX, stationY);
     }
+
+
 }
