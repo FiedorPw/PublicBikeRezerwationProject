@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class User {
 
     private int index;
@@ -8,6 +10,7 @@ public class User {
     private int time;
     private int coordinateX;
     private int coordinateY;
+    private int stationId =-1;
 
     public User(int index, String name, String surname, String bookedAt, int time, int coordinateX, int coordinateY) {
         this.index = index;
@@ -73,5 +76,26 @@ public class User {
 
     public void setCoordinateY(int coordinateY) {
         this.coordinateY = coordinateY;
+    }
+
+    public void setStationId(int stationId){
+        this.stationId=stationId;
+    }
+    public int getStationid(){
+        return this.stationId;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return index == user.index && time == user.time && coordinateX == user.coordinateX && coordinateY == user.coordinateY && name.equals(user.name) && surname.equals(user.surname) && bookedAt.equals(user.bookedAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(index, name, surname, bookedAt, time, coordinateX, coordinateY);
     }
 }

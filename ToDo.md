@@ -7,6 +7,6 @@
 kiedyś
 1.gui
 2.mapa ze stacjami i użytkownikami
-
+3. co to referencje
 done 
 4.znajdywanie najbliższej stacji

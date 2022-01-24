@@ -13,13 +13,14 @@ public class MainApp {
         customers = userReader.read();
     }
 
-
+     // DZIAŁAJĄCY NIEUZYWANY KOD
+    /*
     double findClosestDestinance(int userX, int userY){
         double distanceToStation;
         int xComponent;
         int yComponent;
         double productOfXY;
-        double closestStation = 10000000;
+        double distanceToClosestStation = 10000000;
 
 
         for (int i = 0;i < stations.size(); i++) {
@@ -29,11 +30,11 @@ public class MainApp {
             productOfXY = xComponent * xComponent + yComponent * yComponent;
             distanceToStation = java.lang.Math.sqrt(productOfXY);
             //sprawdzanie najmniejszej odległosci
-            if (distanceToStation < closestStation) {
-                closestStation = distanceToStation;
+            if (distanceToStation < distanceToClosestStation) {
+                distanceToClosestStation = distanceToStation;
             }
         }
-        return closestStation;
+        return distanceToClosestStation;
     }
 
     Station findClosestStation(int userX, int userY){
@@ -60,8 +61,9 @@ public class MainApp {
         System.out.println(searchedStation.getStationName());
         return searchedStation;
     }
-
+    */
     Station findClosestStation(User customer){
+
         int userX = customer.getCoordinateX();
         int userY = customer.getCoordinateY();
         double distanceToStation;
@@ -79,13 +81,25 @@ public class MainApp {
             productOfXY = xComponent * xComponent + yComponent * yComponent;
             distanceToStation = java.lang.Math.sqrt(productOfXY);
             //sprawdzanie najmniejszej odległosci
-            if (distanceToStation < closestStation) {
+            if (distanceToStation < closestStation && stations.get(i).getCurrentAmountOfBikes() != 0 ) {
                 closestStation = distanceToStation;
                 searchedStation=stations.get(i);
             }
+
+
         }
-        System.out.println(searchedStation.getStationName());
+        //rowerki minus 1
+        searchedStation.setCurrentAmountOfBikes(searchedStation.getCurrentAmountOfBikes()-1);
+        System.out.println(searchedStation.getStationName() + " bikes left: "+ searchedStation.getCurrentAmountOfBikes());
+
         return searchedStation;
+
+    }
+
+    void rentBike(User customer,int index){
+        customer.setIndex(index);
+
+
     }
 
     void usersClosestStations()
@@ -93,8 +107,7 @@ public class MainApp {
         for(int i=0; i< customers.size(); i++)
         {
             findClosestStation(customers.get(i));
+
         }
     }
-
-
 }

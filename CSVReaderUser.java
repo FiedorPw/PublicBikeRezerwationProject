@@ -8,7 +8,6 @@ import java.util.List;
 public class CSVReaderUser {
     private ArrayList<User> records = new ArrayList<>();
     private ArrayList<String[]> rows = new ArrayList<>();
-    //List<List<String>> records = new ArrayList<List<String>>();
 
     private String fileName;
     private String separator;

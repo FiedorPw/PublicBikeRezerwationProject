@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Station {
 
@@ -75,7 +76,26 @@ public class Station {
 
     }
 
+    public void rentBike(){
+        this.currentAmountOfBikes= this.currentAmountOfBikes-1;
+    }
+
     public void setStationY(int stationY) {
         this.stationY = stationY;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Station station = (Station) o;
+        return index == station.index && stationCapacity == station.stationCapacity && currentAmountOfBikes == station.currentAmountOfBikes && stationX == station.stationX && stationY == station.stationY && stationName.equals(station.stationName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(index, stationName, stationCapacity, currentAmountOfBikes, stationX, stationY);
+    }
+
+
 }
