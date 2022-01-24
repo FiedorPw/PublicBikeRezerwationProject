@@ -1,3 +1,5 @@
+import java.sql.Time;
+import java.util.Date;
 import java.util.Objects;
 
 public class User {
@@ -6,13 +8,13 @@ public class User {
     private String name;
     private String surname;
     //na razie zapisuje godzine jako Stringa
-    private String bookedAt;
-    private int time;
+    private Date bookedAt;
+    private Date time;
     private int coordinateX;
     private int coordinateY;
     private int stationId =-1;
 
-    public User(int index, String name, String surname, String bookedAt, int time, int coordinateX, int coordinateY) {
+    public User(int index, String name, String surname, Date bookedAt, Date time, int coordinateX, int coordinateY) {
         this.index = index;
         this.name = name;
         this.surname = surname;
@@ -46,19 +48,19 @@ public class User {
         this.surname = surname;
     }
 
-    public String getBookedAt() {
+    public Date getBookedAt() {
         return bookedAt;
     }
 
-    public void setBookedAt(String bookedAt) {
+    public void setBookedAt(Time bookedAt) {
         this.bookedAt = bookedAt;
     }
 
-    public int getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 
