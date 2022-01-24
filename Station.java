@@ -79,7 +79,11 @@ public class Station {
     public void rentBike(){
         this.currentAmountOfBikes= this.currentAmountOfBikes-1;
     }
-
+  public void returnBike(){
+        if(this.currentAmountOfBikes<this.stationCapacity){
+            this.currentAmountOfBikes= this.currentAmountOfBikes+1;
+        }
+    }
     public void setStationY(int stationY) {
         this.stationY = stationY;
     }

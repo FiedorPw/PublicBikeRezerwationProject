@@ -110,4 +110,13 @@ public class MainApp {
 
         }
     }
+    void returnBike (User customer){
+        for(int i=0; i< stations.size(); i++)
+        {
+            if(customer.getIndex()==stations.get(i).getIndex()){
+                stations.get(i).returnBike();
+                customer.setStationId(-1);
+            }
+        }
+    }
 }
