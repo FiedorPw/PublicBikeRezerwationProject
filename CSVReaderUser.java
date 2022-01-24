@@ -1,9 +1,12 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.*;
 
 public class CSVReaderUser {
     private ArrayList<User> records = new ArrayList<>();
@@ -28,7 +31,12 @@ public class CSVReaderUser {
 
                 if(index>0)
                 {
-                    User user = new User(Integer.parseInt(t[0]), t[1], t[2], t[3], Integer.parseInt(t[4]),
+                    //konwersja Stringa na date w nastepujacej postaci
+                    DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
+                    Date d1 = dateFormat.parse(t[3]);
+                    Date d2 = dateFormat.parse(t[4]);
+                    System.out.println(d2 + " ");
+                    User user = new User(Integer.parseInt(t[0]), t[1], t[2], d1 , d2,
                             Integer.parseInt(t[5]),Integer.parseInt(t[6]));
 
                     records.add(user);
@@ -36,7 +44,7 @@ public class CSVReaderUser {
                 index++;
             }
             return records;
-        } catch (IOException ioe) {
+        } catch (IOException | ParseException ioe) {
             ioe.printStackTrace();
         }
         return null;
