@@ -115,7 +115,7 @@ public class MainApp {
         {
             if(customer.getIndex()==stations.get(i).getIndex()){
                 stations.get(i).returnBike();
-                customer.setIndex(-1);
+                customer.setStationId(-1);
             }
         }
     }
