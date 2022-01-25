@@ -28,9 +28,10 @@ public class GUI implements ActionListener, MouseListener {
         //panel
         panel = new JPanel();
         panel.setSize(40,40);
-        //panel.setBorder(BorderFactory.createEmptyBorder(100,100,100,100));
-        panel.setLayout(new GridLayout(0,1));
-        panel.add(button);
+        panel.setBackground(new Color(182, 30, 106));
+        panel.setBounds(200,200,200,200);
+        //panel.setLayout(new GridLayout(0,1));
+        //panel.add(button);
 
         //plansza
         plansza = new JPanel();
@@ -42,20 +43,26 @@ public class GUI implements ActionListener, MouseListener {
 
         //lable
         label = new JLabel();
-        label.setBounds(200,300,100,100);
+        label.setBounds(100,100,300,300);
+        label.setBackground(new Color(70, 234, 33));
+        label.setOpaque(true);
         label.setText("Obecny stan systemu wyporzyczania");
         label.setVisible(true);
-        //ustawienia frame
 
+        //ustawienia frame
         JFrame frame = new JFrame();
         frame.setTitle("System Rezerwacji Rowerów");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(null);
         frame.setResizable(false);
         frame.setSize(800,400);
         frame.setVisible(true);
-        //ImageIcon image = new ImageIcon("bikeIcon.png");
+
+
+        ImageIcon image = new ImageIcon("bikeIcon.png");
+        frame.setIconImage(image.getImage());
         // gdy ^ jest niezakomentowane przestaje się pokazywać lable
-        //frame.getContentPane().setBackground(new Color(66, 133, 29));
+        frame.getContentPane().setBackground(new Color(66, 133, 29));
         //Color.GREEN moze byc w ostatnim nawiasie
 
 
@@ -64,16 +71,14 @@ public class GUI implements ActionListener, MouseListener {
 
         frame.add(button);
 
-        frame.add(panel);
+
         frame.add(label);
-       // panel.add(label);
-
-
-    }
-    public void buttonMetod(){
-
+        plansza.add(label);
+        frame.add(plansza);
+        frame.add(panel);
 
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==button) {
