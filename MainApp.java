@@ -110,12 +110,50 @@ public class MainApp {
 
         }
     }
-    void returnBike (User customer){
+     void returnBike (User customer, Date Time) { //zwróć rower danego użytkownika
         for(int i=0; i< stations.size(); i++)
         {
-            if(customer.getIndex()==stations.get(i).getIndex()){
-                stations.get(i).returnBike();
-                customer.setStationId(-1);
+                if (customer.getStationid() == stations.get(i).getIndex()) {
+                    if(customer.getTime().after(Time)) {
+                    stations.get(i).returnBike();
+                    customer.setStationId(-1);
+                    long diff = customer.getTime().getTime() - Time.getTime();//Liczenie różnicy czasów
+                    TimeUnit time = TimeUnit.MINUTES;
+                    long diffrence = time.convert(diff, TimeUnit.MILLISECONDS);
+                    System.out.println("Rower został zwrócony po czasie " +diffrence +" minut");
+                    return;
+                }else{
+                        stations.get(i).returnBike();
+                        customer.setStationId(-1);
+                        System.out.println("Rower został zwrócony przed czasem");
+                        return;
+                    }
+            }
+        }
+    }
+
+    void returnAllBikes(Date Time){//zwróć wszystkie rowery po danym czasie
+        for(int a =0; a<customers.size();a++){
+            for(int i=0; i< stations.size(); i++)
+            {
+                if(customers.get(a).getTime().after(Time)){
+                    if(customers.get(a).getStationid()==stations.get(i).getIndex()){
+                        stations.get(i).returnBike();
+                        customers.get(a).setStationId(-1);
+                   }
+                }
+            }
+        }
+    }
+
+    void returnAllBikes(){//zwróć wszystkie rowery 
+        for(int a =0; a<customers.size();a++){
+            for(int i=0; i< stations.size(); i++)
+            {
+                    if(customers.get(a).getStationid()==stations.get(i).getIndex()){
+                        stations.get(i).returnBike();
+                        customers.get(a).setStationId(-1);
+                    }
             }
         }
     }
