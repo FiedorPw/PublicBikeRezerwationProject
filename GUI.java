@@ -10,8 +10,9 @@ import java.awt.event.MouseListener;
 public class GUI implements ActionListener, MouseListener {
      Color fajnyzielony = new Color(46, 248, 68);
      JPanel mainPanel;
-     JPanel plansza;
+
      JLabel label;
+     JLabel label2;
      JButton button;
      boolean mouseTracking = false;
 
@@ -20,7 +21,7 @@ public class GUI implements ActionListener, MouseListener {
         //button
         button = new JButton("Ustaw lokalizacje" );
 
-        button.setBounds(235,513,280,50);
+        button.setBounds(135,513,280,50);
 
         button.addActionListener(this);
 
@@ -29,24 +30,30 @@ public class GUI implements ActionListener, MouseListener {
         mainPanel = new JPanel();
         mainPanel.setSize(40,40);
         mainPanel.setBackground(fajnyzielony);
-        mainPanel.setBounds(135,0,500,500);
+        mainPanel.setBounds(43,0,500,500);
 
 
-        //plansza
-        plansza = new JPanel();
 
-
-        plansza.setBounds(135,0,500,500);
 
 
 
         //lable
         label = new JLabel();
-        label.setBounds(100,100,300,300);
-        label.setBackground(new Color(33, 90, 234));
+        label.setBounds(100,100,200,50);
+        label.setBackground(fajnyzielony);
         label.setOpaque(true);
-        label.setText("Obecny stan systemu wyporzyczania");
+        label.setText("Stacja poliwUda 21/37");
         label.setVisible(true);
+
+        label2 = new JLabel();
+        label2.setBounds(200,200,200,50);
+        label2.setBackground(fajnyzielony);
+        label2.setOpaque(true);
+        label2.setText("Stacja uwuuwuwu 69/420");
+        label2.setVisible(true);
+
+
+
 
         //ustawienia frame
         JFrame frame = new JFrame();
@@ -54,7 +61,7 @@ public class GUI implements ActionListener, MouseListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
         frame.setResizable(false);
-        frame.setSize(800,600);
+        frame.setSize(600,600);
         frame.setVisible(true);
 
 
@@ -70,9 +77,10 @@ public class GUI implements ActionListener, MouseListener {
 
 
 
-// frame.add(label);
+        // frame.add(label);
         // plansza.add(label);
         mainPanel.add(label);
+        mainPanel.add(label2);
         frame.add(mainPanel);
         //frame.add(plansza);
         frame.add(button);
