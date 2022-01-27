@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 public class GUI implements ActionListener, MouseListener {
      Color fajnyzielony = new Color(46, 248, 68);
      JPanel mainPanel;
-
+     DragPointer dragpointer = new DragPointer();
      JLabel label;
      JLabel label2;
      JButton button;
@@ -19,10 +19,8 @@ public class GUI implements ActionListener, MouseListener {
 
     public GUI() {
         //button
-        button = new JButton("Ustaw lokalizacje" );
-
+        button = new JButton("Kliknij aby rozpocząc symulacje" );
         button.setBounds(135,513,280,50);
-
         button.addActionListener(this);
 
 
@@ -67,14 +65,7 @@ public class GUI implements ActionListener, MouseListener {
 
         ImageIcon image = new ImageIcon("bikeIcon.png");
         frame.setIconImage(image.getImage());
-        // gdy ^ jest niezakomentowane przestaje się pokazywać lable
         frame.getContentPane().setBackground(new Color(5, 155, 149));
-        //Color.GREEN moze byc w ostatnim nawiasie
-
-
-
-        //lable
-
 
 
         // frame.add(label);
@@ -86,17 +77,21 @@ public class GUI implements ActionListener, MouseListener {
         frame.add(button);
 
 
+        frame.add(dragpointer);
+
+
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==button) {
 
             if(!mouseTracking) {
-                button.setText("Kliknij gdzie chcesz ustawić lokalizacje");
+                button.setText("Kliknij aby rozpocząc symulacje");
                 mouseTracking = true;
             } else {
-                button.setText("Ustaw lokalizacje");
+                button.setText("Symulowanie");
                 mouseTracking = false;
             }
 
