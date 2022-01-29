@@ -15,7 +15,7 @@ public class CSVReaderUser {
     private String fileName;
     private String separator;
 
-    Stations stations = new Stations();
+
     public CSVReaderUser(String fileName, String separator) {
         this.fileName = fileName;
         this.separator = separator;

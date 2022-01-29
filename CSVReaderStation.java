@@ -12,7 +12,7 @@ public class CSVReaderStation {
     private String fileName;
     private String separator;
 
-    Stations stations = new Stations();
+
     public CSVReaderStation(String fileName, String separator) {
         this.fileName = fileName;
         this.separator = separator;
