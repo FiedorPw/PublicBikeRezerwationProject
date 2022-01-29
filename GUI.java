@@ -2,10 +2,8 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import java.awt.*;
 import java.awt.event.*;
-// test czy jak odznacze to czy bedzie
 
-
-public class GUI implements ActionListener, MouseListener {
+public class GUI extends JFrame implements ActionListener, MouseListener  {
      Color fajnyzielony = new Color(46, 248, 68);
      JPanel mainPanel;
      DragPointer dragpointer = new DragPointer();
@@ -16,23 +14,18 @@ public class GUI implements ActionListener, MouseListener {
 
 
     public GUI() {
+
+
+        ImageIcon image = new ImageIcon("bikeIcon.png");
         //button
         button = new JButton("Kliknij aby rozpocząc symulacje" );
         button.setBounds(135,513,280,50);
         button.addActionListener(this);
-
-
         //panel
         mainPanel = new JPanel();
         mainPanel.setSize(40,40);
         mainPanel.setBackground(fajnyzielony);
         mainPanel.setBounds(43,0,500,500);
-
-
-
-
-
-
         //lable
         label = new JLabel();
         label.setBounds(100,100,200,50);
@@ -47,35 +40,30 @@ public class GUI implements ActionListener, MouseListener {
         label2.setOpaque(true);
         label2.setText("Stacja uwuuwuwu 69/420");
         label2.setVisible(true);
-
-
-
-
         //ustawienia frame
+
         JFrame frame = new JFrame();
         frame.setTitle("System Rezerwacji Rowerów");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(null);
+        //frame.setLayout(null);
         frame.setResizable(false);
         frame.setSize(600,600);
         frame.setVisible(true);
 
 
-        ImageIcon image = new ImageIcon("bikeIcon.png");
-        frame.setIconImage(image.getImage());
+        ImageIcon icon = new ImageIcon("bikeIcon.png");
+        frame.setIconImage(icon.getImage());
         frame.getContentPane().setBackground(new Color(5, 155, 149));
 
 
-        // frame.add(label);
-        // plansza.add(label);
+        frame.getContentPane().add(dragpointer);
+        frame.add(label);
+
         mainPanel.add(label);
         mainPanel.add(label2);
         frame.add(mainPanel);
-        //frame.add(plansza);
         frame.add(button);
-        frame.add(dragpointer);
-
-        frame.add(dragpointer);
+        frame.getContentPane().add(dragpointer);
 
 
     }
