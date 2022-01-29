@@ -2,7 +2,7 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import java.awt.*;
 import java.awt.event.*;
-
+// sprawdzenie
 public class GUI extends JFrame implements ActionListener, MouseListener  {
      Color fajnyzielony = new Color(46, 248, 68);
      JPanel mainPanel;
