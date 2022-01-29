@@ -1,10 +1,8 @@
 import javax.swing.*;
 import javax.swing.JFrame;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
+// test czy jak odznacze to czy bedzie
 
 
 public class GUI implements ActionListener, MouseListener {
@@ -75,7 +73,7 @@ public class GUI implements ActionListener, MouseListener {
         frame.add(mainPanel);
         //frame.add(plansza);
         frame.add(button);
-
+        frame.add(dragpointer);
 
         frame.add(dragpointer);
 
