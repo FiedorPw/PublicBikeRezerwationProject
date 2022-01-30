@@ -38,10 +38,6 @@ public class Station {
         return stationCapacity;
     }
 
-    public void setStationCapacity(int stationCapacity) {
-        this.stationCapacity = stationCapacity;
-    }
-
     public int getCurrentAmountOfBikes() {
         return currentAmountOfBikes;
     }
@@ -52,10 +48,6 @@ public class Station {
 
     public int getStationX() {
         return stationX;
-    }
-
-    public void setStationX(int stationX) {
-        this.stationX = stationX;
     }
 
     public int getStationY() {
@@ -85,6 +77,25 @@ public class Station {
     }
     public void setStationY(int stationY) {
         this.stationY = stationY;
+    }
+
+    public double distance(int userX, int userY)
+    {
+        double distanceToStation;
+        int xComponent;
+        int yComponent;
+        double productOfXY;
+        double distanceToClosestStation = 10000000;
+            xComponent = this.getStationX() - userX;
+            yComponent = this.getStationY() - userY;
+            productOfXY = xComponent * xComponent + yComponent * yComponent;
+            distanceToStation = java.lang.Math.sqrt(productOfXY);
+            //sprawdzanie najmniejszej odległosci
+            if (distanceToStation < distanceToClosestStation) {
+                distanceToClosestStation = distanceToStation;
+            }
+
+            return distanceToStation;
     }
 
     @Override
