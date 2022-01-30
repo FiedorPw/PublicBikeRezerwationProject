@@ -14,7 +14,7 @@ public class MainApp {
         stations = stationReader.read();
         customers = userReader.read();
     }
-    
+
 
     double findClosestDestinance(int userX, int userY){
 
@@ -155,6 +155,12 @@ public class MainApp {
         Station closestStation=findClosestStation(user);
         user.setStationId(closestStation.getIndex());
         closestStation.rentBike();
+    }
+
+    public void writingCSV()
+    {
+        WriteDataToCSV writeDataToCSV = new WriteDataToCSV("capacity.csv", ";", stations);
+        writeDataToCSV.write();
     }
 
 
