@@ -14,94 +14,74 @@ public class MainApp {
         stations = stationReader.read();
         customers = userReader.read();
     }
+    
 
-     // DZIAŁAJĄCY NIEUZYWANY KOD
-    /*
     double findClosestDestinance(int userX, int userY){
-        double distanceToStation;
-        int xComponent;
-        int yComponent;
-        double productOfXY;
+
         double distanceToClosestStation = 10000000;
 
-
         for (int i = 0;i < stations.size(); i++) {
-            //basic pitagorasy
-            xComponent = stations.get(i).getStationX() - userX;
-            yComponent = stations.get(i).getStationY() - userY;
-            productOfXY = xComponent * xComponent + yComponent * yComponent;
-            distanceToStation = java.lang.Math.sqrt(productOfXY);
+            Station currentStation =  stations.get(i);
+            double currentDistance = currentStation.distance(userX,userY);
+
             //sprawdzanie najmniejszej odległosci
-            if (distanceToStation < distanceToClosestStation) {
-                distanceToClosestStation = distanceToStation;
+            if (currentDistance < distanceToClosestStation) {
+                distanceToClosestStation = currentDistance;
             }
         }
         return distanceToClosestStation;
     }
 
+    double findClosestDestinance(User customer)
+    {
+        int userX = customer.getCoordinateX();
+        int userY = customer.getCoordinateY();
+
+        return findClosestDestinance(userX,userY);
+    }
+
+    void usersClosestStationsDestinance()
+    {
+        for(int i=0; i< customers.size(); i++)
+        {
+            System.out.println(findClosestDestinance(customers.get(i)));
+
+        }
+    }
+
     Station findClosestStation(int userX, int userY){
-        double distanceToStation;
-        int xComponent;
-        int yComponent;
-        double productOfXY;
+
         Station searchedStation = null;
         double closestStation = 10000000;
-
+        double distanceToClosestStation = 10000000;
 
         for (int i = 0;i < stations.size(); i++) {
-            //basic pitagorasy
-            xComponent = stations.get(i).getStationX() - userX;
-            yComponent = stations.get(i).getStationY() - userY;
-            productOfXY = xComponent * xComponent + yComponent * yComponent;
-            distanceToStation = java.lang.Math.sqrt(productOfXY);
+            Station currentStation =  stations.get(i);
+            double currentDistance = currentStation.distance(userX,userY);
+
             //sprawdzanie najmniejszej odległosci
-            if (distanceToStation < closestStation) {
-                closestStation = distanceToStation;
-                searchedStation=stations.get(i);
+            if (currentDistance < distanceToClosestStation) {
+                distanceToClosestStation = currentDistance;
+                searchedStation = stations.get(i);
             }
         }
+        assert searchedStation != null;
+        searchedStation.rentBike();
         System.out.println(searchedStation.getStationName());
+        System.out.println(searchedStation.getStationName() + " bikes left: "+ searchedStation.getCurrentAmountOfBikes());
         return searchedStation;
+
     }
-    */
+
     Station findClosestStation(User customer){
 
         int userX = customer.getCoordinateX();
         int userY = customer.getCoordinateY();
-        double distanceToStation;
-        int xComponent;
-        int yComponent;
-        double productOfXY;
-        Station searchedStation = null;
-        double closestStation = 10000000;
-
-
-        for (int i = 0;i < stations.size(); i++) {
-            //basic pitagorasy
-            xComponent = stations.get(i).getStationX() - userX;
-            yComponent = stations.get(i).getStationY() - userY;
-            productOfXY = xComponent * xComponent + yComponent * yComponent;
-            distanceToStation = java.lang.Math.sqrt(productOfXY);
-            //sprawdzanie najmniejszej odległosci
-            if (distanceToStation < closestStation && stations.get(i).getCurrentAmountOfBikes() != 0 ) {
-                closestStation = distanceToStation;
-                searchedStation=stations.get(i);
-            }
-
-
-        }
-        //rowerki minus 1
-        searchedStation.setCurrentAmountOfBikes(searchedStation.getCurrentAmountOfBikes()-1);
-        System.out.println(searchedStation.getStationName() + " bikes left: "+ searchedStation.getCurrentAmountOfBikes());
-
-        return searchedStation;
-
+        return findClosestStation(userX,userY);
     }
 
     void rentBike(User customer,int index){
-        customer.setIndex(index);
-
-
+        customer.setStationId(index);
     }
 
     void usersClosestStations()
@@ -148,15 +128,34 @@ public class MainApp {
         }
     }
 
-    void returnAllBikes(){//zwróć wszystkie rowery 
+    void returnAllBikes(){//zwróć wszystkie rowery
         for(int a =0; a<customers.size();a++){
             for(int i=0; i< stations.size(); i++)
             {
-                    if(customers.get(a).getStationid()==stations.get(i).getIndex()){
-                        stations.get(i).returnBike();
-                        customers.get(a).setStationId(-1);
-                    }
+                if(customers.get(a).getStationid()==stations.get(i).getIndex()){
+                    stations.get(i).returnBike();
+                    customers.get(a).setStationId(-1);
+                }
             }
         }
     }
+
+    public void rent(int userId){
+        for(int i=0; i<customers.size(); i++){
+            if(customers.get(i).getIndex()==userId){
+                Station closestStation=findClosestStation(customers.get(1));
+                customers.get(i).setStationId(closestStation.getIndex());
+                closestStation.rentBike();
+            }
+        }
+    }
+
+    public void rent(User user){
+
+        Station closestStation=findClosestStation(user);
+        user.setStationId(closestStation.getIndex());
+        closestStation.rentBike();
+    }
+
+
 }
