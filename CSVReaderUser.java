@@ -35,7 +35,6 @@ public class CSVReaderUser {
                     DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
                     Date d1 = dateFormat.parse(t[3]);
                     Date d2 = dateFormat.parse(t[4]);
-                    System.out.println(d2 + " ");
                     User user = new User(Integer.parseInt(t[0]), t[1], t[2], d1 , d2,
                             Integer.parseInt(t[5]),Integer.parseInt(t[6]));
 
