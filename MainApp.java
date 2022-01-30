@@ -24,8 +24,8 @@ public class MainApp {
             Station currentStation =  stations.get(i);
             double currentDistance = currentStation.distance(userX,userY);
 
-            //sprawdzanie najmniejszej odległosci
-            if (currentDistance < distanceToClosestStation) {
+            //sprawdzanie najmniejszej odległosci dla stacji, ktora ma jakiekolwiek rowery
+            if (currentDistance < distanceToClosestStation && stations.get(i).getCurrentAmountOfBikes() != 0) {
                 distanceToClosestStation = currentDistance;
             }
         }
@@ -60,15 +60,15 @@ public class MainApp {
             double currentDistance = currentStation.distance(userX,userY);
 
             //sprawdzanie najmniejszej odległosci
-            if (currentDistance < distanceToClosestStation) {
+            if (currentDistance < distanceToClosestStation && stations.get(i).getCurrentAmountOfBikes() != 0) {
                 distanceToClosestStation = currentDistance;
                 searchedStation = stations.get(i);
             }
         }
-        assert searchedStation != null;
-        searchedStation.rentBike();
-        System.out.println(searchedStation.getStationName());
-        System.out.println(searchedStation.getStationName() + " bikes left: "+ searchedStation.getCurrentAmountOfBikes());
+//        assert searchedStation != null;
+//        searchedStation.rentBike();
+//        System.out.println(searchedStation.getStationName());
+//        System.out.println(searchedStation.getStationName() + " bikes left: "+ searchedStation.getCurrentAmountOfBikes());
         return searchedStation;
 
     }
@@ -88,7 +88,8 @@ public class MainApp {
     {
         for(int i=0; i< customers.size(); i++)
         {
-            findClosestStation(customers.get(i));
+            String name = findClosestStation(customers.get(i)).getStationName();
+            System.out.println(name);
 
         }
     }
