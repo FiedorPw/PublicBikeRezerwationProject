@@ -9,7 +9,8 @@ public class DragPointer extends JPanel{
     final int HEIGHT = image.getIconHeight();
     Point imageCorner;
     Point prevPt;
-
+    public int pointerx;
+    public int pointery;
     DragPointer(){
 
         imageCorner = new Point(0,0);
@@ -29,6 +30,7 @@ public class DragPointer extends JPanel{
 
         public void mousePressed(MouseEvent e) {
             prevPt = e.getPoint();
+
         }
     }
 
@@ -39,12 +41,14 @@ public class DragPointer extends JPanel{
             Point currentPt = e.getPoint();
 
             imageCorner.translate(
-
                     (int)(currentPt.getX() - prevPt.getX()),
                     (int)(currentPt.getY() - prevPt.getY())
             );
             prevPt = currentPt;
             repaint();
+            pointerx =(int)imageCorner.getX();
+            pointery =(int)imageCorner.getY();
+            System.out.println(pointerx + " " + pointery);
         }
     }
 }

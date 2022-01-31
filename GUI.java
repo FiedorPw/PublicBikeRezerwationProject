@@ -8,7 +8,7 @@ import java.security.cert.TrustAnchor;
 public class GUI extends JFrame implements ActionListener, MouseListener  {
      Color fajnyzielony = new Color(46, 248, 68);
      JPanel mainPanel;
-     DragPointer dragpointer = new DragPointer();
+    DragPointer dragpointer = new DragPointer();
      JLabel label;
      JLabel label2;
      JButton button;
@@ -26,7 +26,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener  {
         //panel
         mainPanel = new JPanel();
        // mainPanel.setSize(40,40);
-      //  mainPanel.setBackground(fajnyzielony);
+
       //  mainPanel.setBounds(43,0,500,500);
         //lable
         label = new JLabel();
@@ -44,11 +44,12 @@ public class GUI extends JFrame implements ActionListener, MouseListener  {
         label2.setVisible(true);
         //ustawienia frame
 
+
         JFrame frame = new JFrame();
         frame.setTitle("System Rezerwacji Rowerów");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout(10,10));
-      //  frame.setResizable(false);
+        //  frame.setResizable(false);
         frame.setSize(600,600);
         frame.setVisible(true);
 
@@ -56,7 +57,6 @@ public class GUI extends JFrame implements ActionListener, MouseListener  {
         ImageIcon icon = new ImageIcon("bikeIcon.png");
         frame.setIconImage(icon.getImage());
         frame.getContentPane().setBackground(new Color(5, 155, 149));
-
 
 
 
@@ -72,20 +72,21 @@ public class GUI extends JFrame implements ActionListener, MouseListener  {
 
 
 
-        frame.getContentPane().add(dragpointer);
-        frame.add(label);
 
-        Container conteiner = frame.getContentPane();
-        conteiner.setLayout(new BorderLayout(30,30));
-      /*  mainPanel.setPreferredSize(new Dimension(50,50));
+        //Container conteiner = frame.getContentPane();
+       // conteiner.setLayout(new BorderLayout(30,30));
+        mainPanel.setPreferredSize(new Dimension(50,50));
         button.setPreferredSize(new Dimension(50,50));
         mainPanel.add(label);
         mainPanel.add(label2);
-        */
 
-        frame.add(mainPanel,BorderLayout.CENTER);
+        //Container.add(dragpointer);
+        //mainPanel.add(dragpointer);
+       //mainPanel.setBackground(fajnyzielony);
+        //frame.add(label);
+       // frame.add(mainPanel,BorderLayout.CENTER);
         frame.add(button,BorderLayout.SOUTH);
-       // frame.getContentPane().add(dragpointer);
+        frame.getContentPane().add(dragpointer);
 
 
     }
