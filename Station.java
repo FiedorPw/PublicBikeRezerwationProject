@@ -75,9 +75,6 @@ public class Station {
             this.currentAmountOfBikes= this.currentAmountOfBikes+1;
         }
     }
-    public void setStationY(int stationY) {
-        this.stationY = stationY;
-    }
 
     public double distance(int userX, int userY)
     {
