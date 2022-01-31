@@ -2,6 +2,8 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import java.awt.*;
 import java.awt.event.*;
+import java.security.cert.TrustAnchor;
+
 // sprawdzenie
 public class GUI extends JFrame implements ActionListener, MouseListener  {
      Color fajnyzielony = new Color(46, 248, 68);
@@ -19,16 +21,16 @@ public class GUI extends JFrame implements ActionListener, MouseListener  {
         ImageIcon image = new ImageIcon("bikeIcon.png");
         //button
         button = new JButton("Kliknij aby rozpocząc symulacje" );
-        button.setBounds(135,513,280,50);
+       // button.setBounds(135,513,280,50);
         button.addActionListener(this);
         //panel
         mainPanel = new JPanel();
-        mainPanel.setSize(40,40);
-        mainPanel.setBackground(fajnyzielony);
-        mainPanel.setBounds(43,0,500,500);
+       // mainPanel.setSize(40,40);
+      //  mainPanel.setBackground(fajnyzielony);
+      //  mainPanel.setBounds(43,0,500,500);
         //lable
         label = new JLabel();
-        label.setBounds(100,100,200,50);
+      //  label.setBounds(100,100,200,50);
         label.setBackground(fajnyzielony);
         label.setOpaque(true);
         label.setText("Stacja poliwUda 21/37");
@@ -36,7 +38,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener  {
 
         label2 = new JLabel();
         label2.setBounds(200,200,200,50);
-        label2.setBackground(fajnyzielony);
+        //label2.setBackground(new Color(185, 26, 105));
         label2.setOpaque(true);
         label2.setText("Stacja uwuuwuwu 69/420");
         label2.setVisible(true);
@@ -45,8 +47,8 @@ public class GUI extends JFrame implements ActionListener, MouseListener  {
         JFrame frame = new JFrame();
         frame.setTitle("System Rezerwacji Rowerów");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //frame.setLayout(null);
-        frame.setResizable(false);
+        frame.setLayout(new BorderLayout(10,10));
+      //  frame.setResizable(false);
         frame.setSize(600,600);
         frame.setVisible(true);
 
@@ -56,14 +58,34 @@ public class GUI extends JFrame implements ActionListener, MouseListener  {
         frame.getContentPane().setBackground(new Color(5, 155, 149));
 
 
+
+
+
+
+       /*
+        c.add(new JButton("In Center"), BorderLayout.CENTER);
+        c.add(new JButton("At the Bottom"), BorderLayout.SOUTH);
+        c.add(new JButton("At the Top"), BorderLayout.NORTH);
+        c.add(new JButton("On the Left"), BorderLayout.WEST);
+        c.add(new JButton("On the Right"), BorderLayout.EAST);
+        */
+
+
+
         frame.getContentPane().add(dragpointer);
         frame.add(label);
 
+        Container conteiner = frame.getContentPane();
+        conteiner.setLayout(new BorderLayout(30,30));
+      /*  mainPanel.setPreferredSize(new Dimension(50,50));
+        button.setPreferredSize(new Dimension(50,50));
         mainPanel.add(label);
         mainPanel.add(label2);
-        frame.add(mainPanel);
-        frame.add(button);
-        frame.getContentPane().add(dragpointer);
+        */
+
+        frame.add(mainPanel,BorderLayout.CENTER);
+        frame.add(button,BorderLayout.SOUTH);
+       // frame.getContentPane().add(dragpointer);
 
 
     }
