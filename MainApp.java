@@ -1,3 +1,6 @@
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import java.util.Date;
@@ -65,23 +68,24 @@ public class MainApp {
                 searchedStation = stations.get(i);
             }
         }
-//        assert searchedStation != null;
-//        searchedStation.rentBike();
-//        System.out.println(searchedStation.getStationName());
-//        System.out.println(searchedStation.getStationName() + " bikes left: "+ searchedStation.getCurrentAmountOfBikes());
+
+        //assert searchedStation != null;
+         searchedStation.rentBike();
+        System.out.println(searchedStation.getStationName() + " bikes left: "+ searchedStation.getCurrentAmountOfBikes());
         return searchedStation;
 
     }
 
-    Station findClosestStation(User customer){
 
+    Station findClosestStation(User customer){
         int userX = customer.getCoordinateX();
         int userY = customer.getCoordinateY();
         return findClosestStation(userX,userY);
     }
 
-    void rentBike(User customer,int index){
-        customer.setStationId(index);
+
+    void rentBike(User customer,int stationIndex){
+        customer.setStationId(stationIndex);
     }
 
     void usersClosestStations()
@@ -89,7 +93,7 @@ public class MainApp {
         for(int i=0; i< customers.size(); i++)
         {
             String name = findClosestStation(customers.get(i)).getStationName();
-            System.out.println(name);
+            //System.out.println(name + " ");
 
         }
     }
@@ -144,9 +148,10 @@ public class MainApp {
     public void rent(int userId){
         for(int i=0; i<customers.size(); i++){
             if(customers.get(i).getIndex()==userId){
-                Station closestStation=findClosestStation(customers.get(1));
+                Station closestStation=findClosestStation(customers.get(i));
                 customers.get(i).setStationId(closestStation.getIndex());
                 closestStation.rentBike();
+
             }
         }
     }
@@ -157,6 +162,16 @@ public class MainApp {
         user.setStationId(closestStation.getIndex());
         closestStation.rentBike();
     }
+
+    void renting()
+    {
+//        LocalTime dataDzis = LocalTime.now();
+//        System.out.println(dataDzis);
+//        DateTimeFormatter dataCzas = DateTimeFormatter.ofPattern("HH:mm:ss");
+//        String date1 = dataDzis.format(dataCzas);
+
+    }
+
 
     public void writingCSV()
     {
