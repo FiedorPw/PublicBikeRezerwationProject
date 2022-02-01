@@ -2,24 +2,30 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Random;
+
+import static java.lang.Thread.sleep;
 
 // sprawdzenie
 public class GUI extends JPanel implements ActionListener, MouseListener  {
      Color fajnyzielony = new Color(46, 248, 68);
      Color fajnyTurkusowy = new Color(28, 229, 222);
-     JPanel mainPanel;
+     JPanel leftpanel;
     JPanel panelPoprostu;
     DragPointer dragpointer = new DragPointer();
      JLabel logo;
      JLabel label2;
-     JLabel centralLable1;
-     JLabel centralLable2;
-     JLabel centralLable3;
-     JLabel centralLable4;
+     JLabel lablePW;
+     JLabel LableSGH;
+     JLabel LableUW;
+     JLabel LableWUM;
 
      JButton button;
      boolean mouseTracking = false;
-
+     int labelPW = 10;
+     int labelUW = 8;
+     int labelWUM = 12;
+     int lableSGH = 9;
 
     public GUI() {
 
@@ -30,10 +36,10 @@ public class GUI extends JPanel implements ActionListener, MouseListener  {
        // button.setBounds(135,513,280,50);
         button.addActionListener(this);
         //panel
-        mainPanel = new JPanel();
+        leftpanel = new JPanel();
         panelPoprostu = new JPanel();
         panelPoprostu.setBackground(fajnyTurkusowy);
-        mainPanel.setBackground(fajnyTurkusowy);
+        leftpanel.setBackground(fajnyTurkusowy);
 
         // mainPanel.setSize(40,40);
 
@@ -51,29 +57,29 @@ public class GUI extends JPanel implements ActionListener, MouseListener  {
         //label2.setBounds(200,200,200,50);
         //label2.setBackground(new Color(185, 26, 105));
         label2.setOpaque(true);
-        label2.setText("Stacja uwuuwuwu 69/420");
+
         label2.setVisible(true);
         //central lable
-        centralLable1 = new JLabel();
-        centralLable2 = new JLabel();
-        centralLable3 = new JLabel();
-        centralLable4 = new JLabel();
+        lablePW = new JLabel();
+        LableSGH = new JLabel();
+        LableUW = new JLabel();
+        LableWUM = new JLabel();
 
-        centralLable1.setBackground(Color.RED);
-        centralLable1.setText("Polibudowa 10/10");
-        centralLable1.setBounds(350, 200, 150, 100);
+        lablePW.setBackground(Color.RED);
+        lablePW.setText("Polibudowa " + labelPW+ "/10");
+        lablePW.setBounds(350, 200, 150, 100);
 
-        centralLable2.setBackground(Color.RED);
-        centralLable2.setText("Sghowa 9/9");
-        centralLable2.setBounds(200,350,100,100);
+        LableSGH.setBackground(Color.RED);
+        LableSGH.setText("Sghowa " + lableSGH+ "/9");
+        LableSGH.setBounds(200,350,100,100);
 
-        centralLable3.setBackground(Color.RED);
-        centralLable3.setText("Uwuwowa 8/8");
-        centralLable3.setBounds(200,50,100,100);
+        LableUW.setBackground(Color.RED);
+        LableUW.setText("Uwuwowa " + labelUW+ "/8");
+        LableUW.setBounds(200,50,100,100);
 
-        centralLable4.setBackground(Color.RED);
-        centralLable4.setText("Wumowa 12/12");
-        centralLable4.setBounds(50,200,100,100);
+        LableWUM.setBackground(Color.RED);
+        LableWUM.setText("Wumowa " + labelWUM+ "/12");
+        LableWUM.setBounds(50,200,100,100);
 
 
 
@@ -90,14 +96,14 @@ public class GUI extends JPanel implements ActionListener, MouseListener  {
         ImageIcon icon = new ImageIcon("bikeIcon.png");
         frame.setIconImage(icon.getImage());
         frame.getContentPane().setBackground(new Color(5, 155, 149));
-        // Jlayerd pane
 
+        // Jlayerd pane
         JLayeredPane panelCentralny = new JLayeredPane();
         panelCentralny.setBackground(fajnyTurkusowy);
-        panelCentralny.add(centralLable1,JLayeredPane.DEFAULT_LAYER);
-        panelCentralny.add(centralLable2,JLayeredPane.DEFAULT_LAYER);
-        panelCentralny.add(centralLable3,JLayeredPane.DEFAULT_LAYER);
-        panelCentralny.add(centralLable4,JLayeredPane.DEFAULT_LAYER);
+        panelCentralny.add(lablePW,JLayeredPane.DEFAULT_LAYER);
+        panelCentralny.add(LableSGH,JLayeredPane.DEFAULT_LAYER);
+        panelCentralny.add(LableUW,JLayeredPane.DEFAULT_LAYER);
+        panelCentralny.add(LableWUM,JLayeredPane.DEFAULT_LAYER);
 
         panelCentralny.add(dragpointer,JLayeredPane.DRAG_LAYER );
         //frame.add(dragpointer);
@@ -110,16 +116,16 @@ public class GUI extends JPanel implements ActionListener, MouseListener  {
         //mainPanel.setSize(50,400);
         //Container conteiner = frame.getContentPane();
        // conteiner.setLayout(new BorderLayout(30,30));
-        mainPanel.setPreferredSize(new Dimension(50,50));
+        leftpanel.setPreferredSize(new Dimension(50,50));
         panelPoprostu.setPreferredSize(new Dimension(50,50));
         //mainPanel.add(label);
         //mainPanel.add(label2);
 
-        //Container.add(dragpointer);
-        //mainPanel.add(dragpointer);
+
+
        //mainPanel.setBackground(fajnyzielony);
         frame.add(logo,BorderLayout.NORTH);
-        frame.add(mainPanel,BorderLayout.EAST);
+        frame.add(leftpanel,BorderLayout.EAST);
         frame.add(panelPoprostu,BorderLayout.WEST);
         frame.add(button,BorderLayout.SOUTH);
         frame.add(label2);
@@ -134,26 +140,54 @@ public class GUI extends JPanel implements ActionListener, MouseListener  {
 
 
 
+
+
+
+
+
+
+
+
     }
 
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==button) {
-            if(!mouseTracking) {
-                button.setText("Kliknij aby rozpocząc symulacje");
-                mouseTracking = true;
-            } else {
-                button.setText("Symulowanie");
-                mouseTracking = false;
-            }
+   @Override
+   public void actionPerformed(ActionEvent e) {
+       if(e.getSource()==button) {
+           if(!mouseTracking) {
+               button.setText("Kliknij aby rozpocząc symulacje");
+               mouseTracking = true;
+           } else {
+              // button.setText("Symulowanie");
 
-        }
-    }
+                   for (int i = 0; i< 28;i++) {
+                       int liczba = (int) (Math.random() * ((3) + 1));
+                       try {
+                           sleep(10);
+                       } catch (InterruptedException ex) {
+                           ex.printStackTrace();
+                       }
+                       if(liczba == 0 && labelPW > 0) labelPW--;
+                       else if (liczba == 1 && labelUW > 0) labelUW--;
+                       else if (liczba == 2 && lableSGH > 0) lableSGH--;
+                       else if (liczba == 3 && labelWUM > 0) labelWUM--;
+                       LableUW.setText("Uwuwowa " + labelUW+ "/8");
+                       lablePW.setText("Polibudowa " + labelPW+ "/10");
+                       LableSGH.setText("Sghowa " + lableSGH+ "/9");
+                       LableWUM.setText("Wumowa " + labelWUM+ "/12");
+                   }
+
+                   //mouseTracking = false;
+           }
+
+       }
+   }
+
+
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        //System.out.println();
 
     }
     //muszą być zeby implement mouse clicked
@@ -173,4 +207,10 @@ public class GUI extends JPanel implements ActionListener, MouseListener  {
     public void mouseExited(MouseEvent e) {
 
     }
-}
+    //Random rn = new Random();
+
+
+    }
+
+
+
