@@ -6,6 +6,11 @@ import java.util.concurrent.TimeUnit;
 import java.util.Date;
 
 public class MainApp {
+    public int peopleonStation1 = 0;
+    public int peopleonStation2 = 0;
+    public int peopleonStation3 = 0;
+    public int peopleonStation4 = 0;
+
 
     private ArrayList<Station> stations = new ArrayList<>();
     private ArrayList<User> customers = new ArrayList<>();
@@ -16,6 +21,10 @@ public class MainApp {
 
         stations = stationReader.read();
         customers = userReader.read();
+    }
+
+    public MainApp() {
+
     }
 
 
@@ -186,5 +195,14 @@ public class MainApp {
         writeDataToCSV.write();
     }
 
+    public void getAmountOfPoeopleOnStations(){
+        for(int i = 0 ; i < customers.toArray().length; i++){
+            if (customers.get(i).getStationid() == 1) peopleonStation1++;
+            else if (customers.get(i).getStationid() == 2) peopleonStation2++;
+            else if (customers.get(i).getStationid() == 3) peopleonStation3++;
+            else if (customers.get(i).getStationid() == 4) peopleonStation4++;
+
+        }
+    }
 
 }

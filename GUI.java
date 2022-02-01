@@ -90,7 +90,7 @@ public class GUI extends JPanel implements ActionListener, MouseListener  {
         frame.setTitle("System Rezerwacji Rowerów");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout(10,10));
-        //  frame.setResizable(false);
+        //frame.setResizable(false);
         frame.setSize(600,600);
         frame.setVisible(true);
         ImageIcon icon = new ImageIcon("bikeIcon.png");
@@ -135,7 +135,7 @@ public class GUI extends JPanel implements ActionListener, MouseListener  {
                          /* DANGER */
         //ALBAŃSKI RAJ, NIE RUSZAĆ STRASZNA BESTIA, niszczy wszysko na swojej drodze
 
-        //frame.add(dragpointer);
+        frame.add(dragpointer);
 
 
 
@@ -158,26 +158,38 @@ public class GUI extends JPanel implements ActionListener, MouseListener  {
                button.setText("Kliknij aby rozpocząc symulacje");
                mouseTracking = true;
            } else {
-              // button.setText("Symulowanie");
+               button.setText("Symulowanie");
+               MainApp app = new MainApp("stations.csv", "users.csv");
+               app.usersClosestStations();
+               app.getAmountOfPoeopleOnStations();
 
-                   for (int i = 0; i< 28;i++) {
+
+
+              /* for (int i = 0; i< 28;i++) {
                        int liczba = (int) (Math.random() * ((3) + 1));
                        try {
                            sleep(10);
                        } catch (InterruptedException ex) {
                            ex.printStackTrace();
-                       }
-                       if(liczba == 0 && labelPW > 0) labelPW--;
-                       else if (liczba == 1 && labelUW > 0) labelUW--;
-                       else if (liczba == 2 && lableSGH > 0) lableSGH--;
-                       else if (liczba == 3 && labelWUM > 0) labelWUM--;
-                       LableUW.setText("Uwuwowa " + labelUW+ "/8");
-                       lablePW.setText("Polibudowa " + labelPW+ "/10");
-                       LableSGH.setText("Sghowa " + lableSGH+ "/9");
-                       LableWUM.setText("Wumowa " + labelWUM+ "/12");
-                   }
+                       }*/
+               labelPW -= app.peopleonStation3;
+               labelUW -= app.peopleonStation2;
+               lableSGH -= app.peopleonStation1;
+               labelWUM -= app.peopleonStation4;
+               LableUW.setText("Uwuwowa " + labelUW+ "/8");
+               lablePW.setText("Polibudowa " + labelPW+ "/10");
+               LableSGH.setText("Sghowa " + lableSGH+ "/9");
+               LableWUM.setText("Wumowa " + labelWUM+ "/12");
 
-                   //mouseTracking = false;
+               /* if(liczba == 3 && labelPW > 0) labelPW--;
+                       else if (liczba == 2 && labelUW > 0) labelUW--;
+                       else if (liczba == 1 && lableSGH > 0) lableSGH--;
+                       else if (liczba == 4 && labelWUM > 0) labelWUM--;
+
+
+                   }  */
+
+                   mouseTracking = false;
            }
 
        }
