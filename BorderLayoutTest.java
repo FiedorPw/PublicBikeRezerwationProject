@@ -26,13 +26,9 @@ public class BorderLayoutTest {
 
 
         JPanel panel1 = new JPanel();
-
         JPanel panel2 = new JPanel();
-
         JPanel panel3 = new JPanel();
-
         JPanel panel4 = new JPanel();
-
         JPanel panel5 = new JPanel();
 
 

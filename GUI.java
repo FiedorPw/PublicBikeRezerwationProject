@@ -14,6 +14,8 @@ public class GUI extends JPanel implements ActionListener, MouseListener  {
      JLabel label2;
      JLabel centralLable1;
      JLabel centralLable2;
+     JLabel centralLable3;
+     JLabel centralLable4;
 
      JButton button;
      boolean mouseTracking = false;
@@ -54,14 +56,27 @@ public class GUI extends JPanel implements ActionListener, MouseListener  {
         //central lable
         centralLable1 = new JLabel();
         centralLable2 = new JLabel();
+        centralLable3 = new JLabel();
+        centralLable4 = new JLabel();
 
         centralLable1.setBackground(Color.RED);
-        centralLable1.setText("testuuuuwa1");
-        centralLable1.setBounds(100, 100, 100, 100);
+        centralLable1.setText("Polibudowa 10/10");
+        centralLable1.setBounds(350, 200, 150, 100);
 
         centralLable2.setBackground(Color.RED);
-        centralLable2.setText("testuuuuwa2");
-        centralLable2.setBounds(50,50,100,100);
+        centralLable2.setText("Sghowa 9/9");
+        centralLable2.setBounds(200,350,100,100);
+
+        centralLable3.setBackground(Color.RED);
+        centralLable3.setText("Uwuwowa 8/8");
+        centralLable3.setBounds(200,50,100,100);
+
+        centralLable4.setBackground(Color.RED);
+        centralLable4.setText("Wumowa 12/12");
+        centralLable4.setBounds(50,200,100,100);
+
+
+
 
 
         //ustawienia frame
@@ -81,6 +96,9 @@ public class GUI extends JPanel implements ActionListener, MouseListener  {
         panelCentralny.setBackground(fajnyTurkusowy);
         panelCentralny.add(centralLable1,JLayeredPane.DEFAULT_LAYER);
         panelCentralny.add(centralLable2,JLayeredPane.DEFAULT_LAYER);
+        panelCentralny.add(centralLable3,JLayeredPane.DEFAULT_LAYER);
+        panelCentralny.add(centralLable4,JLayeredPane.DEFAULT_LAYER);
+
         panelCentralny.add(dragpointer,JLayeredPane.DRAG_LAYER );
         //frame.add(dragpointer);
 
@@ -109,9 +127,9 @@ public class GUI extends JPanel implements ActionListener, MouseListener  {
 
 
                          /* DANGER */
-        //ALBAŃSKI RAJ, NIE RUSZAĆ STRASZNA BESTIA
+        //ALBAŃSKI RAJ, NIE RUSZAĆ STRASZNA BESTIA, niszczy wszysko na swojej drodze
 
-        frame.add(dragpointer);
+        //frame.add(dragpointer);
 
 
 
@@ -122,7 +140,6 @@ public class GUI extends JPanel implements ActionListener, MouseListener  {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==button) {
-
             if(!mouseTracking) {
                 button.setText("Kliknij aby rozpocząc symulacje");
                 mouseTracking = true;
@@ -136,6 +153,7 @@ public class GUI extends JPanel implements ActionListener, MouseListener  {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+
 
     }
     //muszą być zeby implement mouse clicked
