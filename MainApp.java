@@ -70,8 +70,8 @@ public class MainApp {
         }
 
         //assert searchedStation != null;
-         searchedStation.rentBike();
-        System.out.println(searchedStation.getStationName() + " bikes left: "+ searchedStation.getCurrentAmountOfBikes());
+         //searchedStation.rentBike();
+        //System.out.println(searchedStation.getStationName() + " bikes left: "+ searchedStation.getCurrentAmountOfBikes());
         return searchedStation;
 
     }
@@ -92,9 +92,23 @@ public class MainApp {
     {
         for(int i=0; i< customers.size(); i++)
         {
-            String name = findClosestStation(customers.get(i)).getStationName();
-            //System.out.println(name + " ");
+            Station currentStation = findClosestStation(customers.get(i));
+            String name = currentStation.getStationName();
+            rent(customers.get(i));
+            //currentStation.rentBike();
+            int amount = currentStation.getCurrentAmountOfBikes();
+            System.out.println("Dla użykownika: " + customers.get(i).getName() +" "+ customers.get(i).getSurname()
+                    +" "+ "rower znajduje się na stacji: " + name + " ");
+            System.out.println("liczba pozostałych rowerów na stacjach: " + amount);
 
+        }
+    }
+
+    void allStationsCapacity()
+    {
+        for(int i=0; i<stations.size(); i++)
+        {
+            System.out.println(stations.get(i).getStationName() +" " + stations.get(i).getCurrentAmountOfBikes());
         }
     }
      void returnBike (User customer, Date Time) { //zwróć rower danego użytkownika
@@ -163,19 +177,12 @@ public class MainApp {
         closestStation.rentBike();
     }
 
-    void renting()
+
+
+
+    public void writingCSV(String fileName)
     {
-//        LocalTime dataDzis = LocalTime.now();
-//        System.out.println(dataDzis);
-//        DateTimeFormatter dataCzas = DateTimeFormatter.ofPattern("HH:mm:ss");
-//        String date1 = dataDzis.format(dataCzas);
-
-    }
-
-
-    public void writingCSV()
-    {
-        WriteDataToCSV writeDataToCSV = new WriteDataToCSV("capacity.csv", ";", stations);
+        WriteDataToCSV writeDataToCSV = new WriteDataToCSV(fileName, ";", stations);
         writeDataToCSV.write();
     }
 
