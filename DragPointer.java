@@ -13,7 +13,7 @@ public class DragPointer extends JPanel{
     public int pointery;
     DragPointer(){
 
-        imageCorner = new Point(0,0);
+        imageCorner = new Point(220,200);
         ClickListener clickListener = new ClickListener();
         DragListener dragListener = new DragListener();
         this.addMouseListener(clickListener);
