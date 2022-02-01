@@ -141,6 +141,7 @@ public class MainApp {
                     if(customers.get(a).getStationid()==stations.get(i).getIndex()){
                         stations.get(i).returnBike();
                         customers.get(a).setStationId(-1);
+                        System.out.println("rower został zwrócony");
                    }
                 }
             }
