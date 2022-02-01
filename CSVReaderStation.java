@@ -2,10 +2,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
 
 public class CSVReaderStation {
+
+
     //stworzenie listy skladajacej sie z obiektow station - do odczytu z pliku i wrzucenia do kolekcji
     private ArrayList<Station> records = new ArrayList<>();
 
@@ -35,7 +36,7 @@ public class CSVReaderStation {
                     Station station = new Station(Integer.parseInt(t[0]),t[1],Integer.parseInt(t[2]),Integer.parseInt(t[3]),
                             Integer.parseInt(t[4]),Integer.parseInt(t[5]));
 
-                    System.out.println(station);
+                    //System.out.println(station);
                     records.add(station);
                 }
                 index++;
