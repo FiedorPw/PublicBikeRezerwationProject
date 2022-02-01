@@ -23,7 +23,7 @@ public class Main {
             //wyświetlanie aktualnego stanu wszystkich stacji
                 mainApp.allStationsCapacity();
                 //tworzenie obiektu z godziną o której sprawdzamy zworenie rowerów
-             Date Time = new Date(50400000); //godzina 14:00
+             Date Time = new Date(50400000); //godzina 15:00
              mainApp.returnAllBikes(Time);
         //wyświetlanie stanu stacji po zwróceniu
         mainApp.allStationsCapacity();
